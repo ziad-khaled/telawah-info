@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+    <head>
+        <title>Telawah.info</title>
+        <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap&subset=arabic" rel="stylesheet">
+        <meta charset="utf-8" content="width=device-width, initial-scale=1" name="viewport">
+        <style type="text/css">
+                                body{
+                                    margin:40px auto;
+                                    max-width:650px;
+                                    line-height:1.6;
+                                    font-size:18px;
+                                    font-family: 'Tajawal', sans-serif;
+                                    color:#444;
+                                    padding:0 10px
+                                }
+                                h1,h2,h3{
+                                    line-height:1.2
+                                }
+        </style>
+    </head>
+    <body>
+        <header>
+            <center>
+                <h1>تلاوة إنفو</h1>
+                <h4>موقع يساعدك علي معرفة من القاريء و ما الأيات المقروءة.</h4>
+            </center>
+            <hr>
+        </header>
+        <br>
+        <form method="post" enctype="multipart/form-data">
+            <center>
+                <strong>أختر ملف:</strong>
+                <input name="audio_file" type="file" accept="audio/*" required>
+                <input type="submit" value="أرسل">
+            </center>
+        </form>
+        <br>
+        <fieldset>
+            <legend>
+                <strong>النتيجة</strong>
+            </legend>
+            {% if result == None%}
+                <b>حدث خطأ أثناء فحص الملف!</b>
+            {% else %}
+                <b>القارىء: </b>
+                {% result["reciter_name"] %}
+                <br>
+                <b>تفريغ الملف: </b>
+                {% result["audio_transcript"] %}
+            {% endif %}
+
+        </fieldset>
+
+    </body>
+</html>
